@@ -8,21 +8,26 @@ MAX_POINTS = 16
 
 entities = 0
 
-with open("data/icf.txt", "r", encoding="utf-8") as file:
+with open("data/custom.txt", "r", encoding="utf-8") as file:
     reader = csv.reader(file)
     while entities < MAX_ENTITIES:
         try:
             entity = next(reader)
-            if float(entity[1]) > MAX_POINTS: 
-                break
-            word = entity[0].strip().upper()
-            if len(word) == 5 and word.isalpha():
-                for ending in BANNED_ENDINGS:
-                    if word.endswith(ending):
-                        next
+            # if float(entity[1]) > MAX_POINTS: 
+            #     break~
+            try:
+                word = entity[0].strip().upper()
+            except:
+                # word = entity.strip().upper()
+                pass
+            # word = entity[0].strip().upper()
+            # if len(word) == 5 and word.isalpha():
+            #     for ending in BANNED_ENDINGS:
+            #         if word.endswith(ending):
+            #             next
 
-                WORDS.append(word)
-                entities += 1
+            WORDS.append(word)
+            entities += 1
         except StopIteration:
             break
 
